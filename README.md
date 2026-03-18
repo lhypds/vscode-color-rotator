@@ -1,6 +1,6 @@
 
-VSCode Color Rotator
-====================
+VS Code Color Rotator
+=====================
 
 
 Use different color for VSCode window, for different projects.
