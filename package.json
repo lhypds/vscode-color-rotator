@@ -28,15 +28,15 @@
     "commands": [
       {
         "command": "vscode-color-rotator.rotate",
-        "title": "Rotate Window Color"
+        "title": "Window Color Rotate"
       },
       {
         "command": "vscode-color-rotator.load",
-        "title": "Reload Window Color"
+        "title": "Window Color Reload"
       },
       {
         "command": "vscode-color-rotator.clear",
-        "title": "Clear Window Color"
+        "title": "Window Color Clear"
       }
     ]
   },
