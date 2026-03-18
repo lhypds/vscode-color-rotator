@@ -5,7 +5,7 @@ export function activate(context: vscode.ExtensionContext): void {
   const extensionPath = context.extensionPath;
 
   const rotateDisposable = vscode.commands.registerCommand(
-    'vscode-color-rotator.rotate',
+    'window-color-rotator.rotate',
     () => {
       const projectPath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
       if (!projectPath) {
@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   const loadDisposable = vscode.commands.registerCommand(
-    'vscode-color-rotator.load',
+    'window-color-rotator.load',
     () => {
       const projectPath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
       if (!projectPath) {
@@ -29,7 +29,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   const clearDisposable = vscode.commands.registerCommand(
-    'vscode-color-rotator.clear',
+    'window-color-rotator.clear',
     () => {
       const projectPath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
       if (!projectPath) {
