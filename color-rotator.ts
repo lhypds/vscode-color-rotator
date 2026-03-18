@@ -10,7 +10,7 @@ interface ColorCustomizations {
 
 interface ColorEntry {
   name?: string;
-  projectPath?: string;
+  projectPath?: string[];
   'workbench.colorCustomizations': ColorCustomizations;
 }
 
@@ -83,7 +83,7 @@ export function rotateColor(projectPath: string, currentDir: string): void {
   // Ensure every entry has a projectPath field
   for (const entry of colorsList) {
     if (entry.projectPath === undefined) {
-      entry.projectPath = '';
+      entry.projectPath = [];
     }
   }
 
@@ -93,21 +93,21 @@ export function rotateColor(projectPath: string, currentDir: string): void {
     return;
   }
 
-  // Clear projectPath from any entry already assigned to this project,
+  // Clear this project from any entry it was previously assigned to,
   // and remember it to avoid re-picking the same color
   let previousColor: ColorEntry | undefined;
   for (const entry of colorsList) {
-    if (entry.projectPath === projectPath) {
+    if (entry.projectPath?.includes(projectPath)) {
       previousColor = entry;
-      entry.projectPath = '';
+      entry.projectPath = entry.projectPath.filter(p => p !== projectPath);
     }
   }
 
-  // Only pick from colors not assigned to any project and not the previously used color
+  // Pick from colors not currently assigned to this project and not the previously used color
+  // (multiple projects may share the same color)
   const availableColors = colorsList.filter(
     entry =>
-      (!entry.projectPath || entry.projectPath === '') &&
-      entry !== previousColor
+      !entry.projectPath?.includes(projectPath) && entry !== previousColor
   );
   if (availableColors.length === 0) {
     console.log('Error: No available colors (all assigned to other projects).');
@@ -120,8 +120,8 @@ export function rotateColor(projectPath: string, currentDir: string): void {
     `Chosen color: ${chosenColor['workbench.colorCustomizations']['titleBar.activeBackground']}`
   );
 
-  // Update the `colors.json` projectPath
-  chosenColor.projectPath = projectPath;
+  // Update the `colors.json` projectPath (append this project to the array)
+  (chosenColor.projectPath ??= []).push(projectPath);
   if (Array.isArray(colorsJson)) {
     const idx = colorsList.indexOf(chosenColor);
     (colorsJson as ColorEntry[])[idx] = chosenColor;
@@ -175,8 +175,8 @@ export function loadColor(projectPath: string, currentDir: string): void {
   }
 
   // Find the color assigned to this project
-  const assignedColor = colorsList.find(
-    entry => entry.projectPath === projectPath
+  const assignedColor = colorsList.find(entry =>
+    entry.projectPath?.includes(projectPath)
   );
   if (!assignedColor) {
     console.log(`No color assigned to project: ${projectPath}`);
@@ -240,8 +240,8 @@ export function clearColor(projectPath: string, currentDir: string): void {
     let cleared = false;
     if (Array.isArray(colorsJson)) {
       for (const entry of colorsJson) {
-        if (entry.projectPath === projectPath) {
-          entry.projectPath = '';
+        if (entry.projectPath?.includes(projectPath)) {
+          entry.projectPath = entry.projectPath.filter(p => p !== projectPath);
           cleared = true;
         }
       }
@@ -256,8 +256,8 @@ export function clearColor(projectPath: string, currentDir: string): void {
     } else if (typeof colorsJson === 'object' && colorsJson !== null) {
       for (const value of Object.values(colorsJson)) {
         const entry = value as ColorEntry;
-        if (entry.projectPath === projectPath) {
-          entry.projectPath = '';
+        if (entry.projectPath?.includes(projectPath)) {
+          entry.projectPath = entry.projectPath.filter(p => p !== projectPath);
           cleared = true;
         }
       }

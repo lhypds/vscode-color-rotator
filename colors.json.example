@@ -7,7 +7,7 @@
       "titleBar.inactiveBackground": "#ffeaea",
       "statusBar.background": "#ffeaea"
     },
-    "projectPath": ""
+    "projectPath": []
   },
   {
     "colorName": "green",
@@ -17,7 +17,7 @@
       "titleBar.inactiveBackground": "#f2ffea",
       "statusBar.background": "#f2ffea"
     },
-    "projectPath": ""
+    "projectPath": []
   },
   {
     "colorName": "blue",
@@ -27,7 +27,7 @@
       "titleBar.inactiveBackground": "#eafeff",
       "statusBar.background": "#eafeff"
     },
-    "projectPath": ""
+    "projectPath": []
   },
   {
     "colorName": "skyblue",
@@ -37,7 +37,7 @@
       "titleBar.inactiveBackground": "#eaf6ff",
       "statusBar.background": "#eaf6ff"
     },
-    "projectPath": ""
+    "projectPath": []
   },
   {
     "colorName": "purple",
@@ -47,7 +47,7 @@
       "titleBar.inactiveBackground": "#eceaff",
       "statusBar.background": "#eceaff"
     },
-    "projectPath": ""
+    "projectPath": []
   },
   {
     "colorName": "lavender",
@@ -57,7 +57,7 @@
       "titleBar.inactiveBackground": "#feeaff",
       "statusBar.background": "#feeaff"
     },
-    "projectPath": ""
+    "projectPath": []
   },
   {
     "colorName": "rose",
@@ -67,7 +67,7 @@
       "titleBar.inactiveBackground": "#ffeaf2",
       "statusBar.background": "#ffeaf2"
     },
-    "projectPath": ""
+    "projectPath": []
   },
   {
     "colorName": "red",
@@ -77,6 +77,6 @@
       "titleBar.inactiveBackground": "#ffeaeb",
       "statusBar.background": "#ffeaeb"
     },
-    "projectPath": ""
+    "projectPath": []
   }
 ]
