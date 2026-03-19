@@ -6,9 +6,18 @@ import {
   resetColors
 } from './color-rotator';
 
-export function activate(context: vscode.ExtensionContext): void {
+export async function activate(
+  context: vscode.ExtensionContext
+): Promise<void> {
   const extensionPath = context.extensionPath;
+
+  // Ensure the global storage directory exists
   const userStoragePath = context.globalStorageUri.fsPath;
+  try {
+    await vscode.workspace.fs.stat(context.globalStorageUri);
+  } catch {
+    await vscode.workspace.fs.createDirectory(context.globalStorageUri);
+  }
 
   const rotateDisposable = vscode.commands.registerCommand(
     'window-color-rotator.rotate',
