@@ -35,7 +35,32 @@ To clear the colors for all projects, for both in `settings.json` and in color c
 Use command:
 `Window Color Rotator: Reset All`.
 
+
+Customize Colors
+----------------
+
+Colors Configuration  
 The color configuration file is at `~/.vscode/extensions/gcc3.vscode-color-rotator/colors.json`.  
+It stores the colors and the project paths, one color can be associated with multiple projects.  
+You can customize it to add your own colors.  
+
+Color example:
+```json
+{
+    "colorName": "pink",
+    "color": "#ffeaea",
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#ffeaea",
+        "titleBar.inactiveBackground": "#ffeaea",
+        "titleBar.activeForeground": "#1e1e1e",
+        "titleBar.inactiveForeground": "#6d6c6f",
+        "statusBar.background": "#ffeaea"
+    },
+    "projectPath": []
+}
+```
+
+The `workbench.colorCustomizations` field will be copied to the `settings.json` file.
 
 
 Local Execution
