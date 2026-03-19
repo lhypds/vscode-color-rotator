@@ -3,46 +3,49 @@ VS Code Window Color Rotator
 ============================
 
 
-Rotate to use different color for VSCode window, for different projects.  
+Rotate to use a different color for VSCode window in different projects.  
 
 
 Quick Start
 -----------
 
-Ctrl + Shift + P, type `Window Color Rotator` to trigger command.  
-It can remember the color for each project.  
+Press Ctrl + Shift + P, then type `Window Color Rotator` to trigger the command.  
+It can remember a color for each project.  
 
 
 How It Works
 ------------
 
-Basiclly it write a custom color into `.vscode/.settings.json` file, `workbench.colorCustomizations`.  
-The configuration file is at `~/.vscode/extensions/gcc3.vscode-color-rotator/colors.json`.  
+Basically it writes a custom color into `.vscode/.settings.json` file. (`workbench.colorCustomizations`).  
 
 Rotate color  
-To rotate color for the current project.  
+To rotate the color for the current project.  
 Use command:  
 `Window Color Rotator: Rotate`.  
-It will rotate choose a color for the current project window, and write the color to `settings.json` file.  
+It will rotate and choose a color for the current project window, and write the color to `settings.json` file.  
 And save the project path to the color to `colors.json` file.   
 
 Clear color  
-To clear the color for current project winddow. For both in `settings.json` and configuration file (`colors.json`).  
+To clear the color for the current project window for both in `settings.json` and in color configuration file (`colors.json`).  
 Use command:  
 `Window Color Rotator: Clear`.  
 
-Reset all
-To clear all the colors for all projects. For both in `settings.json` and configuration file (`colors.json`).
+Reset all  
+To clear the colors for all projects, for both in `settings.json` and in color configuration file (`colors.json`).
 Use command:
 `Window Color Rotator: Reset All`.
 
+The color configuration file is at `~/.vscode/extensions/gcc3.vscode-color-rotator/colors.json`.  
 
-Local Execute
--------------
 
-Clone the source code to project `.vscode` folder.  
+Local Execution
+---------------
+
+Clone the source code into the project's `.vscode` folder.  
 Run `setup.sh` to install dependencies.  
 
+Scripts:  
 `rotate.sh` to rotate window color.  
 `clear.sh` to clear window color.  
-`reset.sh` to reset all window colors.  
+`load.sh` to load the color for current project.  
+`resetall.sh` to reset all window colors.  
