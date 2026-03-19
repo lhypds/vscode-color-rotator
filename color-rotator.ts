@@ -10,6 +10,7 @@ interface ColorCustomizations {
 
 interface ColorEntry {
   name?: string;
+  color?: string;
   projectPath?: string[];
   'workbench.colorCustomizations': ColorCustomizations;
 }
