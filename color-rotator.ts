@@ -17,7 +17,11 @@ interface ColorEntry {
 
 type ColorsJson = ColorEntry[] | { [name: string]: Omit<ColorEntry, 'name'> };
 
-export function rotateColor(projectPath: string, extensionPath: string): void {
+export function rotateColor(
+  projectPath: string,
+  extensionPath: string,
+  userStoragePath: string
+): void {
   // Ensure `.vscode`
   const dotVscodePath = path.join(projectPath, '.vscode');
   if (
@@ -48,7 +52,7 @@ export function rotateColor(projectPath: string, extensionPath: string): void {
   console.log('`settings.json` found and loaded.');
 
   // Load `colors.json`
-  const colorsPath = path.join(extensionPath, 'colors.json');
+  const colorsPath = path.join(userStoragePath, 'colors.json');
   if (!fs.existsSync(colorsPath)) {
     console.log('`colors.json` not found.');
 
@@ -145,12 +149,20 @@ export function rotateColor(projectPath: string, extensionPath: string): void {
   console.log('Color updated to `workbench.colorCustomizations`.');
 }
 
-export function loadColor(projectPath: string, extensionPath: string): void {
+export function loadColor(
+  projectPath: string,
+  extensionPath: string,
+  userStoragePath: string
+): void {
   // Load `colors.json`
-  const colorsPath = path.join(extensionPath, 'colors.json');
+  const colorsPath = path.join(userStoragePath, 'colors.json');
   if (!fs.existsSync(colorsPath)) {
     console.log('`colors.json` not found.');
-    return;
+
+    // Create a `colors.json` from `colors.json.example`.
+    const examplePath = path.join(extensionPath, 'colors.json.example');
+    fs.copyFileSync(examplePath, colorsPath);
+    console.log('Created `colors.json` from `colors.json.example`.');
   }
   let colorsJson: ColorsJson;
   try {
@@ -225,9 +237,13 @@ export function loadColor(projectPath: string, extensionPath: string): void {
   console.log('Color loaded to `workbench.colorCustomizations`.');
 }
 
-export function clearColor(projectPath: string, extensionPath: string): void {
+export function clearColor(
+  projectPath: string,
+  extensionPath: string,
+  userStoragePath: string
+): void {
   // Load `colors.json` and clear the projectPath assignment for this project
-  const colorsPath = path.join(extensionPath, 'colors.json');
+  const colorsPath = path.join(userStoragePath, 'colors.json');
   if (fs.existsSync(colorsPath)) {
     let colorsJson: ColorsJson;
     try {
@@ -308,12 +324,16 @@ export function clearColor(projectPath: string, extensionPath: string): void {
   }
 }
 
-export function resetColors(projectPath: string, extensionPath: string): void {
+export function resetColors(
+  projectPath: string,
+  extensionPath: string,
+  userStoragePath: string
+): void {
   // Clear the current project color
-  clearColor(projectPath, extensionPath);
+  clearColor(projectPath, extensionPath, userStoragePath);
 
   // Copy `colors.json.example` to `colors.json` to reset all colors and assignments
-  const colorsPath = path.join(extensionPath, 'colors.json');
+  const colorsPath = path.join(userStoragePath, 'colors.json');
   const examplePath = path.join(extensionPath, 'colors.json.example');
 
   if (!fs.existsSync(examplePath)) {
@@ -347,13 +367,13 @@ if (path.basename(dotVscodePath) !== '.vscode') {
 
   const command = process.argv[2];
   if (command === 'load') {
-    loadColor(projectPath, currentDir);
+    loadColor(projectPath, currentDir, currentDir);
   } else if (command === 'clear') {
-    clearColor(projectPath, currentDir);
+    clearColor(projectPath, currentDir, currentDir);
   } else if (command === 'resetall') {
-    resetColors(projectPath, currentDir);
+    resetColors(projectPath, currentDir, currentDir);
   } else if (command === 'rotate' || !command) {
-    rotateColor(projectPath, currentDir);
+    rotateColor(projectPath, currentDir, currentDir);
   } else {
     console.log(
       `Unknown command: "${command}". Use "rotate", "load", "clear", or "resetall".`

@@ -39,12 +39,15 @@ Use command:
 Customize Colors
 ----------------
 
-Colors Configuration  
-The color configuration file is at `~/.vscode/extensions/gcc3.vscode-color-rotator/colors.json`.  
-It stores the colors and the project paths, one color can be associated with multiple projects.  
-You can customize it to add your own colors.  
+You can use colors configuration (`colors.json`) to customize the colors.  
 
-Color example:
+Location
+The color configuration file is in the extension's global storage.  
+`~/Library/Application Support/Code/User/globalStorage/gcc3.vscode-color-rotator/colors.json`.  
+
+It stores the colors and the project paths, one color can be associated with multiple projects.  
+Color example:  
+
 ```json
 {
     "colorName": "pink",
