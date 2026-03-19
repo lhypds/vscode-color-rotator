@@ -34,7 +34,7 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   const resetAllDisposable = vscode.commands.registerCommand(
-    'window-color-rotator.reset-all',
+    'window-color-rotator.resetall',
     () => {
       const projectPath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
       if (!projectPath) {
