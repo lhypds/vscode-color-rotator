@@ -412,12 +412,14 @@ if (path.basename(dotVscodePath) !== '.vscode') {
   console.log(`Project path: ${projectPath}`);
 
   const command = process.argv[2];
+  const arguments_ = process.argv.slice(3);
   if (command === 'load') {
     loadColor(projectPath, currentDir, currentDir);
   } else if (command === 'clear') {
     clearColor(projectPath, currentDir, currentDir);
   } else if (command === 'resetall') {
-    resetColors(projectPath, currentDir, currentDir);
+    const theme = arguments_[0] === 'dark' ? 'dark' : 'light';
+    resetColors(projectPath, currentDir, currentDir, theme);
   } else if (command === 'rotate' || !command) {
     rotateColor(projectPath, currentDir, currentDir);
   } else {

@@ -55,8 +55,8 @@ Use command:
 `Window Color Rotator: Clear`.  
 
 3. Reset all  
-Clear the colors for all projects, for both in `.vscode/settings.json` and in color configuration file (`colors.json`).  
-It will copy the default color configuration file (`colors.json.example` or `colors.dark.json.example`) and replace the `colors.json` file.  
+Clear the colors for all projects, for both in current project `.vscode/settings.json` and in color configuration file (`colors.json`).  
+It will re-initialize the color configuration file from example file (`colors.json.example` or `colors.dark.json.example`).  
 All the colors and project paths will be cleared.  
 Use command:  
 `Window Color Rotator: Reset All`.  
@@ -107,5 +107,5 @@ For local execution, `colors.json` file is in the cloned folder.
 Scripts:  
 `rotate.sh` to rotate window color.  
 `clear.sh` to clear window color.  
-`load.sh` to load the color for current project.  
-`resetall.sh` to reset all window colors.  
+`load.sh` to load the color from `colors.json` for current project.  
+`resetall.sh [light|dark]` to reset all window colors.  
