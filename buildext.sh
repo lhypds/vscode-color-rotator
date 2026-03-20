@@ -13,6 +13,10 @@ if ! command -v vsce &> /dev/null; then
   npm install -g @vscode/vsce
 fi
 
+# Delete existing VSIX files
+echo "Deleting old .vsix files..."
+find . -maxdepth 1 -type f -name "*.vsix" -print -delete
+
 # Compile TypeScript
 echo "Compiling..."
 npm run compile
