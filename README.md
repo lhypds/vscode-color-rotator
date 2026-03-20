@@ -13,7 +13,7 @@ Search `Window Color Rotator` in the VS Code extension marketplace and install i
 
 * Uninstall  
 Uninstall the extension from the VS Code extension marketplace.  
-Remove the `workbench.colorCustomizations` field in the `settings.json` file.  
+Remove the `workbench.colorCustomizations` field in the `.vscode/settings.json` file.  
 
 
 Quick Start
