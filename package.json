@@ -4,7 +4,7 @@
   "publisher": "gcc3",
   "version": "1.0.11",
   "description": "Colorize your project windows.",
-  "icon": "images/icon-192x192.png",
+  "icon": "images/icon.png",
   "license": "MIT",
   "repository": {
     "type": "git",
