@@ -1,0 +1,108 @@
+[
+  {
+    "colorName": "pink",
+    "color": "#432323",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#432323",
+      "titleBar.inactiveBackground": "#432323",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#432323",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": []
+  },
+  {
+    "colorName": "green",
+    "color": "#2f4323",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#2f4323",
+      "titleBar.inactiveBackground": "#2f4323",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#2f4323",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": []
+  },
+  {
+    "colorName": "blue",
+    "color": "#234243",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#234243",
+      "titleBar.inactiveBackground": "#234243",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#234243",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": []
+  },
+  {
+    "colorName": "skyblue",
+    "color": "#233543",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#233543",
+      "titleBar.inactiveBackground": "#233543",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#233543",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": []
+  },
+  {
+    "colorName": "purple",
+    "color": "#262343",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#262343",
+      "titleBar.inactiveBackground": "#262343",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#262343",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": []
+  },
+  {
+    "colorName": "lavender",
+    "color": "#422343",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#422343",
+      "titleBar.inactiveBackground": "#422343",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#422343",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": [
+      "/Users/liu/code/vscode-window-color-rotator"
+    ]
+  },
+  {
+    "colorName": "rose",
+    "color": "#43232f",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#43232f",
+      "titleBar.inactiveBackground": "#43232f",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#43232f",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": []
+  },
+  {
+    "colorName": "red",
+    "color": "#432324",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#432324",
+      "titleBar.inactiveBackground": "#432324",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#432324",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": []
+  }
+]
