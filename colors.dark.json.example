@@ -102,5 +102,18 @@
       "statusBar.foreground": "#f3f3f5"
     },
     "projectPath": []
+  },
+  {
+    "colorName": "orange",
+    "color": "#362b1f",
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#362b1f",
+      "titleBar.inactiveBackground": "#362b1f",
+      "titleBar.activeForeground": "#f3f3f5",
+      "titleBar.inactiveForeground": "#a8a8ad",
+      "statusBar.background": "#362b1f",
+      "statusBar.foreground": "#f3f3f5"
+    },
+    "projectPath": []
   }
 ]
