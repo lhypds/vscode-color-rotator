@@ -7,7 +7,8 @@
       "titleBar.inactiveBackground": "#ffeaea",
       "titleBar.activeForeground": "#1e1e1e",
       "titleBar.inactiveForeground": "#6d6c6f",
-      "statusBar.background": "#ffeaea"
+      "statusBar.background": "#ffeaea",
+      "statusBar.foreground": "#1e1e1e"
     },
     "projectPath": []
   },
@@ -19,7 +20,8 @@
       "titleBar.inactiveBackground": "#f2ffea",
       "titleBar.activeForeground": "#1e1e1e",
       "titleBar.inactiveForeground": "#6d6c6f",
-      "statusBar.background": "#f2ffea"
+      "statusBar.background": "#f2ffea",
+      "statusBar.foreground": "#1e1e1e"
     },
     "projectPath": []
   },
@@ -31,7 +33,8 @@
       "titleBar.inactiveBackground": "#eafeff",
       "titleBar.activeForeground": "#1e1e1e",
       "titleBar.inactiveForeground": "#6d6c6f",
-      "statusBar.background": "#eafeff"
+      "statusBar.background": "#eafeff",
+      "statusBar.foreground": "#1e1e1e"
     },
     "projectPath": []
   },
@@ -43,7 +46,8 @@
       "titleBar.inactiveBackground": "#eaf6ff",
       "titleBar.activeForeground": "#1e1e1e",
       "titleBar.inactiveForeground": "#6d6c6f",
-      "statusBar.background": "#eaf6ff"
+      "statusBar.background": "#eaf6ff",
+      "statusBar.foreground": "#1e1e1e"
     },
     "projectPath": []
   },
@@ -55,7 +59,8 @@
       "titleBar.inactiveBackground": "#eceaff",
       "titleBar.activeForeground": "#1e1e1e",
       "titleBar.inactiveForeground": "#6d6c6f",
-      "statusBar.background": "#eceaff"
+      "statusBar.background": "#eceaff",
+      "statusBar.foreground": "#1e1e1e"
     },
     "projectPath": []
   },
@@ -67,7 +72,8 @@
       "titleBar.inactiveBackground": "#feeaff",
       "titleBar.activeForeground": "#1e1e1e",
       "titleBar.inactiveForeground": "#6d6c6f",
-      "statusBar.background": "#feeaff"
+      "statusBar.background": "#feeaff",
+      "statusBar.foreground": "#1e1e1e"
     },
     "projectPath": []
   },
@@ -79,7 +85,8 @@
       "titleBar.inactiveBackground": "#ffeaf2",
       "titleBar.activeForeground": "#1e1e1e",
       "titleBar.inactiveForeground": "#6d6c6f",
-      "statusBar.background": "#ffeaf2"
+      "statusBar.background": "#ffeaf2",
+      "statusBar.foreground": "#1e1e1e"
     },
     "projectPath": []
   },
@@ -91,7 +98,8 @@
       "titleBar.inactiveBackground": "#ffeaeb",
       "titleBar.activeForeground": "#1e1e1e",
       "titleBar.inactiveForeground": "#6d6c6f",
-      "statusBar.background": "#ffeaeb"
+      "statusBar.background": "#ffeaeb",
+      "statusBar.foreground": "#1e1e1e"
     },
     "projectPath": []
   }
