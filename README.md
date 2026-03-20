@@ -13,7 +13,7 @@ Installation
 
 Search `Window Color Rotator` in the VS Code extension marketplace and install it.  
 
-* Uninstall  
+Uninstall  
 Uninstall the extension from the VS Code extension marketplace.  
 Remove the `workbench.colorCustomizations` field in the `.vscode/settings.json` file.  
 
@@ -45,18 +45,18 @@ Everytime when user opens a project, it will check the project path in the color
 
 Functions:
 
-1. Rotate color  
+Rotate color  
 To rotate the color for the current project window.  
 Use command:  
 `Window Color Rotator: Rotate`.  
 It will rotate and choose a color for the current project window from the `colors.json`, and write the color to `.vscode/settings.json` file. It will save the project path to color configuration file (`colors.json`).   
 
-2. Clear color  
+Clear color  
 Clear the color for the current project window, both in `.vscode/settings.json` and in color configuration file (`colors.json`).  
 Use command:  
 `Window Color Rotator: Clear`.  
 
-3. Reset all  
+Reset all  
 Clear the colors for all projects, for both in current project `.vscode/settings.json` and in color configuration file (`colors.json`).  
 It will re-initialize the color configuration file from example file (`colors.json.example` or `colors.dark.json.example`).  
 All the colors and project paths will be cleared.  
@@ -82,7 +82,7 @@ Field `workbench.colorCustomizations` is the color setting, it will be copied to
 Filed `projectPath` is an array of project paths that are associated with the color.  
 
 Color example with fields description:  
-```json
+```
 {
     "colorName": "pink",  // color name, just for reference
     "color": "#ffeaea",  // primary color, just for reference
