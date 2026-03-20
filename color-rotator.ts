@@ -345,12 +345,14 @@ export function clearColor(
 }
 
 export function resetColors(
-  projectPath: string,
+  projectPath: string | undefined,
   extensionPath: string,
   userStoragePath: string
 ): void {
   // Clear the current project color
-  clearColor(projectPath, extensionPath, userStoragePath);
+  if (projectPath) {
+    clearColor(projectPath, extensionPath, userStoragePath);
+  }
 
   // Copy `colors.json.example` to `colors.json` to reset all colors and assignments
   const colorsPath = path.join(userStoragePath, 'colors.json');
