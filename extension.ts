@@ -86,7 +86,7 @@ export async function activate(
     100
   );
   rotateStatusBarItem.text = '$(sync) Rotate Color';
-  rotateStatusBarItem.tooltip = 'Rotate Window Color';
+  rotateStatusBarItem.tooltip = 'Window Color Rotator';
   rotateStatusBarItem.command = 'window-color-rotator.rotate';
   rotateStatusBarItem.show();
 
