@@ -81,11 +81,21 @@ export async function activate(
     }
   );
 
+  const rotateStatusBarItem = vscode.window.createStatusBarItem(
+    vscode.StatusBarAlignment.Right,
+    100
+  );
+  rotateStatusBarItem.text = '$(sync) Rotate Color';
+  rotateStatusBarItem.tooltip = 'Rotate Window Color';
+  rotateStatusBarItem.command = 'window-color-rotator.rotate';
+  rotateStatusBarItem.show();
+
   context.subscriptions.push(
     rotateDisposable,
     clearDisposable,
     resetAllDisposable,
-    customizeDisposable
+    customizeDisposable,
+    rotateStatusBarItem
   );
 
   // Run loadColor on activation to apply the color for the current project
