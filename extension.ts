@@ -6,6 +6,28 @@ import {
   resetColors
 } from './color-rotator';
 
+async function initializeColorConfiguration(
+  context: vscode.ExtensionContext,
+  colorsFileUri: vscode.Uri
+): Promise<void> {
+  // Show a command-palette style confirmation before resetting all colors
+  const lightOrDark = await vscode.window.showQuickPick(['Light', 'Dark'], {
+    placeHolder: 'Prefer light or dark theme?',
+    ignoreFocusOut: true
+  });
+
+  // Read from example and write to `colors.json`
+  const exampleColorsContent = await vscode.workspace.fs.readFile(
+    vscode.Uri.joinPath(
+      context.extensionUri,
+      lightOrDark === 'Dark'
+        ? 'colors.dark.json.example'
+        : 'colors.json.example'
+    )
+  );
+  await vscode.workspace.fs.writeFile(colorsFileUri, exampleColorsContent);
+}
+
 export async function activate(
   context: vscode.ExtensionContext
 ): Promise<void> {
@@ -27,24 +49,20 @@ export async function activate(
   try {
     await vscode.workspace.fs.stat(colorsFileUri);
   } catch {
-    console.log('colors.json not found, creating from example...');
+    console.log('`colors.json` not found, creating from example...');
 
-    // Show a command-palette style confirmation before resetting all colors
-    const lightOrDark = await vscode.window.showQuickPick(['Light', 'Dark'], {
-      placeHolder: 'Window Color Rotator: You prefer a light or a dark theme?',
-      ignoreFocusOut: true
-    });
-
-    // Read from example and write to `colors.json`
-    const exampleColorsContent = await vscode.workspace.fs.readFile(
-      vscode.Uri.joinPath(
-        context.extensionUri,
-        lightOrDark === 'Light'
-          ? 'colors.json.example'
-          : 'colors.dark.json.example'
+    // Popup a warning message at the right bottom corner (button `Initialize `colors.json``)
+    const initializeButton = 'Initialize `colors.json`';
+    vscode.window
+      .showWarningMessage(
+        'Color configuration file (`colors.json`) not found. Please initialize.',
+        initializeButton
       )
-    );
-    await vscode.workspace.fs.writeFile(colorsFileUri, exampleColorsContent);
+      .then(async selection => {
+        if (selection === initializeButton) {
+          await initializeColorConfiguration(context, colorsFileUri);
+        }
+      });
   }
 
   const rotateDisposable = vscode.commands.registerCommand(
