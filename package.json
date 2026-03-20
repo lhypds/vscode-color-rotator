@@ -2,7 +2,7 @@
   "name": "window-color-rotator",
   "displayName": "Window Color Rotator",
   "publisher": "gcc3",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Rotate VSCode window colors for different projects",
   "license": "MIT",
   "repository": {
