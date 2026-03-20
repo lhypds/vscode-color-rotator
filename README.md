@@ -13,14 +13,13 @@ Search `Window Color Rotator` in the VS Code extension marketplace and install i
 
 * Uninstall  
 Uninstall the extension from the VS Code extension marketplace.  
-After uninstalling the extension, you may notice the color for the project window may still remain.  
-To clear the color, you can manually remove it from the `.vscode/.settings.json` file in the project folder.  
-Simply remove the `workbench.colorCustomizations` field in the `settings.json` file.  
+Remove the `workbench.colorCustomizations` field in the `settings.json` file.  
 
 
 Quick Start
 -----------
 
+Status bar button
 Click the `Rotate Color` button in the status bar to rotate the color for the current project window.  
 It can remember a color for each project (path).  
 
