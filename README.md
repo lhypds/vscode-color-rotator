@@ -41,16 +41,15 @@ Rotate color
 To rotate the color for the current project window.  
 Use command:  
 `Window Color Rotator: Rotate`.  
-It will rotate and choose a color for the current project window, and write the color to `settings.json` file.  
-And save the project path to the color to `colors.json` file.   
+It will rotate and choose a color for the current project window from the `colors.json`, and write the color to `.vscode/settings.json` file. It will save the project path to color configuration file (`colors.json`).   
 
 Clear color  
-To clear the color for the current project window for both in `settings.json` and in color configuration file (`colors.json`).  
+Clear the color for the current project window, both in `.vscode/settings.json` and in color configuration file (`colors.json`).  
 Use command:  
 `Window Color Rotator: Clear`.  
 
 Reset all  
-To clear the colors for all projects, for both in `settings.json` and in color configuration file (`colors.json`).  
+Clear the colors for all projects, for both in `.vscode/settings.json` and in color configuration file (`colors.json`).  
 Use command:  
 `Window Color Rotator: Reset All`.  
 
@@ -65,14 +64,14 @@ Use command:
 File location  
 The color configuration file is in the extension's global storage:  
 `~/Library/Application Support/Code/User/globalStorage/gcc3.vscode-color-rotator/colors.json`.  
+Manually open the file and edit it to customize the colors will also work.  
 
-File structure  
+File structure and fields  
 `colors.json` stores the colors and the project paths, one color can be associated with multiple projects.  
-Fields  
-Field `workbench.colorCustomizations` is the color setting, it will be copied to the `settings.json` in `.vscode` folder.  
+Field `workbench.colorCustomizations` is the color setting, it will be copied to the `.vscode/settings.json`.  
 Filed `projectPath` is an array of project paths that are associated with the color.  
 
-Color example and field description:    
+Color example with fields description:  
 ```json
 {
     "colorName": "pink",  // color name, just for reference
