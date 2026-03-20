@@ -21,6 +21,13 @@ async function initializeColorConfiguration(
     )
   );
   await vscode.workspace.fs.writeFile(colorsFileUri, exampleColorsContent);
+
+  // Clear the current project color in `.vscode/settings.json`
+  loadColor(
+    vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || '',
+    context.extensionPath,
+    context.globalStorageUri.fsPath
+  );
 }
 
 export async function activate(
@@ -99,12 +106,6 @@ export async function activate(
             await initializeColorConfiguration(context, colorsFileUri);
           }
         });
-
-      // Clear the current project color in `.vscode/settings.json`
-      const projectPath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
-      if (projectPath) {
-        clearColor(projectPath, extensionPath, userStoragePath);
-      }
     }
   );
 
