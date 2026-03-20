@@ -9,8 +9,14 @@ Rotate to use a different color for VS Code window in different projects.
 Quick Start
 -----------
 
+Click the `Rotate Color` button in the status bar to rotate the color for the current project window.  
+It can remember a color for each project (path).  
+
+
+Command Palette
+---------------
+
 Press Ctrl + Shift + P, then type `Window Color Rotator` to trigger the command.  
-It can remember a color for each project.  
 
 Support commands:  
 - `Window Color Rotator: Rotate` to rotate the color for the current project window.  
