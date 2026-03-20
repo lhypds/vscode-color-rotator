@@ -3,7 +3,7 @@ VS Code Window Color Rotator
 ============================
 
 
-Rotate to use a different color for VSCode window in different projects.  
+Rotate to use a different color for VS Code window in different projects.  
 
 
 Quick Start
@@ -16,10 +16,10 @@ It can remember a color for each project.
 How It Works
 ------------
 
-Basically it writes a custom color into `.vscode/.settings.json` file. (`workbench.colorCustomizations`).  
+Basically it writes a custom color into `.vscode/.settings.json` file. (`workbench.colorCustomizations` field).  
 
 Rotate color  
-To rotate the color for the current project.  
+To rotate the color for the current project window.  
 Use command:  
 `Window Color Rotator: Rotate`.  
 It will rotate and choose a color for the current project window, and write the color to `settings.json` file.  
@@ -31,9 +31,9 @@ Use command:
 `Window Color Rotator: Clear`.  
 
 Reset all  
-To clear the colors for all projects, for both in `settings.json` and in color configuration file (`colors.json`).
-Use command:
-`Window Color Rotator: Reset All`.
+To clear the colors for all projects, for both in `settings.json` and in color configuration file (`colors.json`).  
+Use command:  
+`Window Color Rotator: Reset All`.  
 
 
 Customize Colors
@@ -61,7 +61,7 @@ Color example:
     "projectPath": []
 }
 ```
-The `workbench.colorCustomizations` field will be copied to the `settings.json` file.
+Field `workbench.colorCustomizations` will be copied to the `settings.json` file.
 
 
 Local Execution
