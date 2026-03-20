@@ -49,7 +49,7 @@ export function rotateColor(
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
     vscode.window.showWarningMessage(
-      '`.vscode/settings.json` contains invalid JSON.'
+      'Aborted: `.vscode/settings.json` contains invalid JSON.'
     );
     return;
   }
@@ -71,7 +71,9 @@ export function rotateColor(
     colorsJson = JSON.parse(colorsContent);
   } catch {
     console.log(`Error: ${colorsPath} contains invalid JSON.`);
-    vscode.window.showWarningMessage('`colors.json` contains invalid JSON.');
+    vscode.window.showWarningMessage(
+      'Aborted: `colors.json` contains invalid JSON.'
+    );
     return;
   }
 
@@ -175,7 +177,9 @@ export function loadColor(
     colorsJson = JSON.parse(colorsContent);
   } catch {
     console.log(`Error: ${colorsPath} contains invalid JSON.`);
-    vscode.window.showWarningMessage('`colors.json` contains invalid JSON.');
+    vscode.window.showWarningMessage(
+      'Aborted: `colors.json` contains invalid JSON.'
+    );
     return;
   }
 
@@ -230,7 +234,7 @@ export function loadColor(
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
     vscode.window.showWarningMessage(
-      '`.vscode/settings.json` contains invalid JSON.'
+      'Aborted: `.vscode/settings.json` contains invalid JSON.'
     );
     return;
   }
@@ -260,7 +264,9 @@ export function clearColor(
       colorsJson = JSON.parse(colorsContent);
     } catch {
       console.log(`Error: ${colorsPath} contains invalid JSON.`);
-      vscode.window.showWarningMessage('`colors.json` contains invalid JSON.');
+      vscode.window.showWarningMessage(
+        'Aborted: `colors.json` contains invalid JSON.'
+      );
       return;
     }
 
@@ -317,7 +323,7 @@ export function clearColor(
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
     vscode.window.showWarningMessage(
-      '`.vscode/settings.json` contains invalid JSON.'
+      'Aborted: `.vscode/settings.json` contains invalid JSON.'
     );
     return;
   }
