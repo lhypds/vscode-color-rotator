@@ -39,7 +39,8 @@ How It Works
 
 Basically it writes a custom color into `.vscode/.settings.json` file `workbench.colorCustomizations` field in the project folder.  
 
-When rotating color, it will choose a color from the color configuration file (`colors.json`), and write the color to `.vscode/settings.json` file. It will save the project path to color configuration file (`colors.json`).  
+When rotating color, it will choose a color from the color configuration file (`colors.json`), and write the color to `.vscode/settings.json` file.  
+It will save the project path to color configuration file (`colors.json`).  
 
 Everytime when user opens a project, it will check the project path in the color configuration file (`colors.json`), if there is a color associated with the project path, it will load the color to `.vscode/settings.json` file.  
 
