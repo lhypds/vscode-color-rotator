@@ -5,6 +5,8 @@ VS Code Window Color Rotator
 
 Rotate to use a different color for VS Code window in different projects.  
 
+![Mar-20-2026 18-01-12](https://github.com/user-attachments/assets/f271aa37-f14e-4529-b61f-65b47474c0e1)
+
 
 Installation
 ------------
