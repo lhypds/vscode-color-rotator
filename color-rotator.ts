@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as vscode from 'vscode';
 
 const VERSION = '1.0.0';
 console.log(`vscode-color-rotator v${VERSION}`);
@@ -47,6 +48,9 @@ export function rotateColor(
     settingsJson = JSON.parse(settingsContent);
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
+    vscode.window.showWarningMessage(
+      '`.vscode/settings.json` contains invalid JSON.'
+    );
     return;
   }
   console.log('`settings.json` found and loaded.');
@@ -67,6 +71,7 @@ export function rotateColor(
     colorsJson = JSON.parse(colorsContent);
   } catch {
     console.log(`Error: ${colorsPath} contains invalid JSON.`);
+    vscode.window.showWarningMessage('`colors.json` contains invalid JSON.');
     return;
   }
 
@@ -170,6 +175,7 @@ export function loadColor(
     colorsJson = JSON.parse(colorsContent);
   } catch {
     console.log(`Error: ${colorsPath} contains invalid JSON.`);
+    vscode.window.showWarningMessage('`colors.json` contains invalid JSON.');
     return;
   }
 
@@ -223,6 +229,9 @@ export function loadColor(
     settingsJson = JSON.parse(settingsContent);
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
+    vscode.window.showWarningMessage(
+      '`.vscode/settings.json` contains invalid JSON.'
+    );
     return;
   }
 
@@ -251,6 +260,7 @@ export function clearColor(
       colorsJson = JSON.parse(colorsContent);
     } catch {
       console.log(`Error: ${colorsPath} contains invalid JSON.`);
+      vscode.window.showWarningMessage('`colors.json` contains invalid JSON.');
       return;
     }
 
@@ -306,6 +316,9 @@ export function clearColor(
     settingsJson = JSON.parse(settingsContent);
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
+    vscode.window.showWarningMessage(
+      '`.vscode/settings.json` contains invalid JSON.'
+    );
     return;
   }
 
