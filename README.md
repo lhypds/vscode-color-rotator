@@ -8,12 +8,22 @@ Rotate to use a different color for VS Code window in different projects.
 ![Mar-20-2026 18-01-12](https://github.com/user-attachments/assets/f271aa37-f14e-4529-b61f-65b47474c0e1)
 
 
+Why
+---
+
+When you have multiple VS Code windows open for different projects, it can be hard to distinguish them at a glance. Colorize the window can help.  
+
+Maybe there are some extensions out there can do similar things.  
+I cannot find one can change color easily by a single click, so I made it.  
+I hope it can help you as well...  
+
+
 Installation
 ------------
 
 Search `Window Color Rotator` in the VS Code extension marketplace and install it.  
 
-Uninstall  
+How To Uninstall  
 Uninstall the extension from the VS Code extension marketplace.  
 Remove the `workbench.colorCustomizations` field in the `.vscode/settings.json` file.  
 
