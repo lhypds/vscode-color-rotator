@@ -127,7 +127,7 @@ export async function activate(
     vscode.StatusBarAlignment.Right,
     100
   );
-  rotateStatusBarItem.text = '$(sync) Rotate Color';
+  rotateStatusBarItem.text = '$(sync) RC';
   rotateStatusBarItem.tooltip = 'Window Color Rotator';
   rotateStatusBarItem.command = 'window-color-rotator.rotate';
   rotateStatusBarItem.show();
