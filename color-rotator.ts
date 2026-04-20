@@ -1,12 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { ensureFile } from './utils/fileUtils';
+import { readJson } from './utils/jsonUtils';
 let vscode: typeof import('vscode') | undefined;
 try {
   vscode = require('vscode');
 } catch {
   vscode = undefined;
 }
-import JSON5 from 'json5';
 
 const VERSION = '1.0.0';
 console.log(`vscode-color-rotator v${VERSION}`);
@@ -42,16 +43,12 @@ export function rotateColor(
 
   // Ensure `settings.json`
   const settingsPath = path.join(dotVscodePath, 'settings.json');
-  if (!fs.existsSync(settingsPath)) {
-    fs.writeFileSync(settingsPath, '{}\n', 'utf-8');
-    console.log(`Created ${settingsPath}`);
-  }
+  ensureFile(settingsPath, '{}\n');
 
   // Load `settings.json`
   let settingsJson: Record<string, unknown>;
   try {
-    const settingsContent = fs.readFileSync(settingsPath, 'utf-8');
-    settingsJson = JSON5.parse(settingsContent);
+    settingsJson = readJson<Record<string, unknown>>(settingsPath);
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
     vscode?.window.showWarningMessage(
@@ -73,8 +70,7 @@ export function rotateColor(
   }
   let colorsJson: ColorsJson;
   try {
-    const colorsContent = fs.readFileSync(colorsPath, 'utf-8');
-    colorsJson = JSON5.parse(colorsContent);
+    colorsJson = readJson<ColorsJson>(colorsPath);
   } catch {
     console.log(`Error: ${colorsPath} contains invalid JSON.`);
     vscode?.window.showWarningMessage(
@@ -179,8 +175,7 @@ export function loadColor(
   }
   let colorsJson: ColorsJson;
   try {
-    const colorsContent = fs.readFileSync(colorsPath, 'utf-8');
-    colorsJson = JSON5.parse(colorsContent);
+    colorsJson = readJson<ColorsJson>(colorsPath);
   } catch {
     console.log(`Error: ${colorsPath} contains invalid JSON.`);
     vscode?.window.showWarningMessage(
@@ -227,16 +222,12 @@ export function loadColor(
 
   // Ensure `settings.json`
   const settingsPath = path.join(dotVscodePath, 'settings.json');
-  if (!fs.existsSync(settingsPath)) {
-    fs.writeFileSync(settingsPath, '{}\n', 'utf-8');
-    console.log(`Created ${settingsPath}`);
-  }
+  ensureFile(settingsPath, '{}\n');
 
   // Load `settings.json`
   let settingsJson: Record<string, unknown>;
   try {
-    const settingsContent = fs.readFileSync(settingsPath, 'utf-8');
-    settingsJson = JSON5.parse(settingsContent);
+    settingsJson = readJson<Record<string, unknown>>(settingsPath);
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
     vscode?.window.showWarningMessage(
@@ -282,8 +273,7 @@ export function clearColor(
   if (fs.existsSync(colorsPath)) {
     let colorsJson: ColorsJson;
     try {
-      const colorsContent = fs.readFileSync(colorsPath, 'utf-8');
-      colorsJson = JSON5.parse(colorsContent);
+      colorsJson = readJson<ColorsJson>(colorsPath);
     } catch {
       console.log(`Error: ${colorsPath} contains invalid JSON.`);
       vscode?.window.showWarningMessage(
@@ -340,8 +330,7 @@ export function clearColor(
   }
   let settingsJson: Record<string, unknown>;
   try {
-    const settingsContent = fs.readFileSync(settingsPath, 'utf-8');
-    settingsJson = JSON5.parse(settingsContent);
+    settingsJson = readJson<Record<string, unknown>>(settingsPath);
   } catch {
     console.log(`Error: ${settingsPath} contains invalid JSON.`);
     vscode?.window.showWarningMessage(

@@ -1,5 +1,14 @@
+import * as fs from 'fs';
 import * as vscode from 'vscode';
 import { rotateColor, loadColor, clearColor } from './color-rotator';
+import { readJson } from './utils/jsonUtils';
+import { ensureDirectory, uriExists } from './utils/vscodeUtils';
+
+interface ColorEntry {
+  projectPath?: string[];
+}
+
+type ColorsJson = ColorEntry[] | { [name: string]: ColorEntry };
 
 async function initializeColorConfiguration(
   context: vscode.ExtensionContext,
@@ -37,20 +46,14 @@ export async function activate(
 
   // Ensure the global storage directory exists
   const userStoragePath = context.globalStorageUri.fsPath;
-  try {
-    await vscode.workspace.fs.stat(context.globalStorageUri);
-  } catch {
-    await vscode.workspace.fs.createDirectory(context.globalStorageUri);
-  }
+  await ensureDirectory(context.globalStorageUri);
 
   // Initialize the colors.json file if it doesn't exist
   const colorsFileUri = vscode.Uri.joinPath(
     context.globalStorageUri,
     'colors.json'
   );
-  try {
-    await vscode.workspace.fs.stat(colorsFileUri);
-  } catch {
+  if (!(await uriExists(colorsFileUri))) {
     console.log('`colors.json` not found, creating from example...');
 
     // Popup a warning message at the right bottom corner
@@ -65,6 +68,56 @@ export async function activate(
           await initializeColorConfiguration(context, colorsFileUri);
         }
       });
+  }
+
+  // When active, check the `colors.json`
+  // Clean up any non-existing folders in the `projectPath` for each color entry
+  // Loop through the projectPath for each color, if the folder not exist, remove it from the projectPath
+  if (await uriExists(colorsFileUri)) {
+    try {
+      const colorsJson = readJson<ColorsJson>(colorsFileUri.fsPath);
+      let changed = false;
+
+      const removeMissingPaths = (entry: ColorEntry): void => {
+        const projectPaths = entry.projectPath;
+        if (!projectPaths) {
+          return;
+        }
+
+        const filtered = projectPaths.filter(folderPath =>
+          fs.existsSync(folderPath)
+        );
+        if (filtered.length !== projectPaths.length) {
+          entry.projectPath = filtered;
+          changed = true;
+        }
+      };
+
+      if (Array.isArray(colorsJson)) {
+        for (const entry of colorsJson) {
+          removeMissingPaths(entry);
+        }
+      } else if (typeof colorsJson === 'object' && colorsJson !== null) {
+        for (const entry of Object.values(colorsJson)) {
+          removeMissingPaths(entry);
+        }
+      }
+
+      if (changed) {
+        await vscode.workspace.fs.writeFile(
+          colorsFileUri,
+          Buffer.from(JSON.stringify(colorsJson, null, 2) + '\n', 'utf-8')
+        );
+        console.log(
+          'Removed non-existing folders from `projectPath` in `colors.json`.'
+        );
+      }
+    } catch {
+      console.log(`Error: ${colorsFileUri.fsPath} contains invalid JSON.`);
+      vscode.window.showWarningMessage(
+        'Skipped cleanup: `colors.json` contains invalid JSON.'
+      );
+    }
   }
 
   const rotateDisposable = vscode.commands.registerCommand(
