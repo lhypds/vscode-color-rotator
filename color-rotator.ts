@@ -150,6 +150,11 @@ export function rotateColor(
   // Add or replace `workbench.colorCustomizations` in `settings.json`
   settingsJson['workbench.colorCustomizations'] =
     chosenColor['workbench.colorCustomizations'];
+  // VS Code's "Modern UI" (floating panels) forces the titleBar/activityBar/
+  // statusBar backgrounds transparent, ignoring colorCustomizations, and can be
+  // auto-enabled per-user by Microsoft's experimentation service without ever
+  // touching settings.json. Explicitly opt out so our colors keep applying.
+  settingsJson['workbench.experimental.modernUI'] = false;
   fs.writeFileSync(
     settingsPath,
     JSON.stringify(settingsJson, null, 2) + '\n',
@@ -240,6 +245,9 @@ export function loadColor(
   if (assignedColor) {
     settingsJson['workbench.colorCustomizations'] =
       assignedColor['workbench.colorCustomizations'];
+    // See rotateColor: opt out of "Modern UI" so it doesn't force our
+    // titleBar/activityBar/statusBar colors transparent.
+    settingsJson['workbench.experimental.modernUI'] = false;
     fs.writeFileSync(
       settingsPath,
       JSON.stringify(settingsJson, null, 2) + '\n',
@@ -247,15 +255,23 @@ export function loadColor(
     );
   } else {
     // Remove the `workbench.colorCustomizations` if no color is assigned to this project
+    let changed = false;
     if ('workbench.colorCustomizations' in settingsJson) {
       delete settingsJson['workbench.colorCustomizations'];
+      changed = true;
+      console.log(
+        'Removed `workbench.colorCustomizations` from `settings.json` since no color is assigned to this project.'
+      );
+    }
+    if ('workbench.experimental.modernUI' in settingsJson) {
+      delete settingsJson['workbench.experimental.modernUI'];
+      changed = true;
+    }
+    if (changed) {
       fs.writeFileSync(
         settingsPath,
         JSON.stringify(settingsJson, null, 2) + '\n',
         'utf-8'
-      );
-      console.log(
-        'Removed `workbench.colorCustomizations` from `settings.json` since no color is assigned to this project.'
       );
     }
   }
@@ -339,18 +355,28 @@ export function clearColor(
     return;
   }
 
+  let settingsChanged = false;
   if ('workbench.colorCustomizations' in settingsJson) {
     delete settingsJson['workbench.colorCustomizations'];
-    fs.writeFileSync(
-      settingsPath,
-      JSON.stringify(settingsJson, null, 2) + '\n',
-      'utf-8'
-    );
+    settingsChanged = true;
     console.log(
       'Removed `workbench.colorCustomizations` from `settings.json`.'
     );
   } else {
     console.log('`workbench.colorCustomizations` not set, nothing to remove.');
+  }
+
+  if ('workbench.experimental.modernUI' in settingsJson) {
+    delete settingsJson['workbench.experimental.modernUI'];
+    settingsChanged = true;
+  }
+
+  if (settingsChanged) {
+    fs.writeFileSync(
+      settingsPath,
+      JSON.stringify(settingsJson, null, 2) + '\n',
+      'utf-8'
+    );
   }
 }
 
